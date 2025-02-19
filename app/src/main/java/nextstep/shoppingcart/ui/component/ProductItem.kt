@@ -84,7 +84,7 @@ fun ProductItem(
 
 @Preview(showBackground = true)
 @Composable
-fun ProductItemPreview() {
+private fun ProductItemPreview() {
     val dummyItem = Product(
         imageUrl = "https://picsum.photos/600/600",
         name = "상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명",
