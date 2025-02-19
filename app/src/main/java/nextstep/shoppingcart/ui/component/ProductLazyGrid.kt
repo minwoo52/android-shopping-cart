@@ -52,6 +52,8 @@ fun ProductLazyGridPreview() {
 
     ProductLazyGrid(
         products = products,
-        onClick = {}
+        onClick = {
+            // No-op
+        }
     )
 }

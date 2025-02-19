@@ -92,6 +92,8 @@ fun ProductItemPreview() {
     )
     ProductItem(
         product = dummyItem,
-        onClick = {}
+        onClick = {
+            // No-op
+        }
     )
 }

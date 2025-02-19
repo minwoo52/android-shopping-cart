@@ -26,13 +26,17 @@ fun ProductScreen() {
         topBar = {
             ProductListAppBar(
                 title = appBarTitle,
-                actionIconOnClick = { },
+                actionIconOnClick = {
+                    // TODO: 장바구니 페이지 이동
+                },
             )
         },
     ) { innerPadding ->
         ProductLazyGrid(
             products = products,
-            onClick = { },
+            onClick = {
+                // TODO: 상품 상세 페이지 이동
+            },
             modifier = Modifier.padding(innerPadding)
         )
     }

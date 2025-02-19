@@ -68,6 +68,8 @@ fun ProductListAppBar(
 fun ProductListAppBarPreview() {
     ProductListAppBar(
         title = "앱바 제목 1234567890123456789",
-        actionIconOnClick = { },
+        actionIconOnClick = {
+            // No-op
+        },
     )
 }
