@@ -1,5 +1,7 @@
 package nextstep.shoppingcart
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,6 +20,14 @@ class CartActivity : ComponentActivity() {
                     }
                 )
             }
+        }
+    }
+
+    companion object {
+
+        fun start(context: Context) {
+            val intent = Intent(context, CartActivity::class.java)
+            context.startActivity(intent)
         }
     }
 }
