@@ -24,7 +24,7 @@ fun CartScreen(
         topBar = {
             BackButtonAppBar(
                 title = appBarTitle,
-                onClick = { onClickBackButton() },
+                onClick = onClickBackButton,
             )
         },
     ) { innerPadding ->

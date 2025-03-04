@@ -45,7 +45,7 @@ fun ProductDetailScreen(
         topBar = {
             BackButtonAppBar(
                 title = appBarTitle,
-                onClick = { onClickBackButton() },
+                onClick = onClickBackButton,
             )
         },
         bottomBar = {
