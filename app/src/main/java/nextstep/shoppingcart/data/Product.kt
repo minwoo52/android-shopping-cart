@@ -9,4 +9,7 @@ data class Product(
 ) {
     val formattedPrice: String
         get() = String.format(Locale.KOREA, "%,d원", price)
+
+    val randomId: String
+        get() = (0..1000).random().toString()
 }
