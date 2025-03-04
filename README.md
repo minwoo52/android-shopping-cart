@@ -13,7 +13,7 @@
 - [x] 1단계 피드백 반영
   - [x] 비어있는 함수나, 비어있는 람다내에 주석 또는 TODO 기록하기
   - [x] TopAppBar 를 알아보고 CenterAlignedTopAppBar 로 교체하기
-- [ ] BackButton 포함 된 AppBar 컴포넌트 추가
+- [x] BackButton 포함 된 AppBar 컴포넌트 추가
 - [ ] Button 컴포넌트 추가
 - [ ] 상품 상세 페이지
   - [ ] AppBar 영역 추가
