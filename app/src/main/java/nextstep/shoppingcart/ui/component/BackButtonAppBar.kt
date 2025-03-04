@@ -21,7 +21,7 @@ import nextstep.shoppingcart.ui.theme.White
 @Composable
 fun BackButtonAppBar(
     title: String,
-    onBackClick: () -> Unit,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val backArrowIcon = ImageVector.vectorResource(R.drawable.arrow_back_24px)
@@ -37,7 +37,7 @@ fun BackButtonAppBar(
         },
         modifier = modifier,
         navigationIcon = {
-            IconButton(onClick = onBackClick) {
+            IconButton(onClick = onClick) {
                 Icon(
                     imageVector = backArrowIcon,
                     contentDescription = descriptionNavigate
@@ -56,7 +56,7 @@ fun BackButtonAppBar(
 private fun BackButtonAppBarPreview() {
     BackButtonAppBar(
         title = "앱바 제목",
-        onBackClick = {
+        onClick = {
             // No-op
         },
     )

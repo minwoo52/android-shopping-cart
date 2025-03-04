@@ -16,7 +16,7 @@ import nextstep.shoppingcart.ui.theme.White
 
 @Composable
 fun CartScreen(
-    onBackButtonClick: () -> Unit
+    onClickBackButton: () -> Unit
 ) {
     val appBarTitle = stringResource(R.string.title_cart)
 
@@ -24,7 +24,7 @@ fun CartScreen(
         topBar = {
             BackButtonAppBar(
                 title = appBarTitle,
-                onBackClick = { onBackButtonClick() },
+                onClick = { onClickBackButton() },
             )
         },
     ) { innerPadding ->
@@ -43,7 +43,7 @@ fun CartScreen(
 private fun CartScreenPreview() {
     ShoppingCartTheme {
         CartScreen(
-            onBackButtonClick = {
+            onClickBackButton = {
                 // NO-OP
             }
         )
