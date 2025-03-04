@@ -21,7 +21,7 @@ import nextstep.shoppingcart.ui.theme.White
 @Composable
 fun ProductListAppBar(
     title: String,
-    actionIconOnClick: () -> Unit,
+    onClickActionButton: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val descriptionNavigate = stringResource(R.string.description_shopping_cart_navigate)
@@ -37,7 +37,7 @@ fun ProductListAppBar(
         modifier = modifier,
         actions = {
             IconButton(
-                onClick = actionIconOnClick
+                onClick = onClickActionButton
             ) {
                 Icon(
                     imageVector = Icons.Filled.ShoppingCart,
@@ -58,7 +58,7 @@ fun ProductListAppBar(
 private fun ProductListAppBarPreview() {
     ProductListAppBar(
         title = "앱바 제목",
-        actionIconOnClick = {
+        onClickActionButton = {
             // No-op
         },
     )

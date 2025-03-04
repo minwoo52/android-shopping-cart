@@ -12,7 +12,10 @@ import nextstep.shoppingcart.ui.component.ProductLazyGrid
 import nextstep.shoppingcart.ui.theme.ShoppingCartTheme
 
 @Composable
-fun ProductScreen() {
+fun ProductListScreen(
+    onClickActionButton: () -> Unit,
+    onClickProductItem: (Product) -> Unit,
+) {
     val appBarTitle = stringResource(R.string.title_product_list)
     val products: List<Product> = List(20) { index ->
         Product(
@@ -26,17 +29,13 @@ fun ProductScreen() {
         topBar = {
             ProductListAppBar(
                 title = appBarTitle,
-                actionIconOnClick = {
-                    // TODO: 장바구니 페이지 이동
-                },
+                onClickActionButton = onClickActionButton,
             )
         },
     ) { innerPadding ->
         ProductLazyGrid(
             products = products,
-            onClick = {
-                // TODO: 상품 상세 페이지 이동
-            },
+            onClick = onClickProductItem,
             modifier = Modifier.padding(innerPadding)
         )
     }
@@ -46,6 +45,13 @@ fun ProductScreen() {
 @Composable
 private fun ProductScreenPreview() {
     ShoppingCartTheme {
-        ProductScreen()
+        ProductListScreen(
+            onClickActionButton = {
+                // NO-OP
+            },
+            onClickProductItem = {
+                // NO-OP
+            }
+        )
     }
 }

@@ -16,7 +16,7 @@ import nextstep.shoppingcart.ui.theme.White
 @Composable
 fun ProductLazyGrid(
     products: List<Product>,
-    onClick: () -> Unit,
+    onClick: (Product) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyVerticalGrid(
