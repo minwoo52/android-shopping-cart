@@ -1,5 +1,7 @@
 package nextstep.shoppingcart
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -42,5 +44,14 @@ class ProductDetailActivity : ComponentActivity() {
     companion object {
 
         const val ARG_PRODUCT_ID = "productId"
+
+        fun newIntent(
+            context: Context,
+            productId: String
+        ): Intent {
+            return Intent(context, ProductDetailActivity::class.java).apply {
+                putExtra(ARG_PRODUCT_ID, productId)
+            }
+        }
     }
 }
