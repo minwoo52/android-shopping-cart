@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Shopping Cart</string>
     <string name="title_product_list">상품 목록</string>
+    <string name="title_product_detail">상품 상세</string>
+    <string name="title_cart">장바구니</string>"
     <string name="description_product_item_navigate">상품 상세 페이지로 이동</string>
     <string name="description_shopping_cart_navigate">장바구니 이동</string>
+    <string name="description_back_navigate">뒤로가기</string>
+    <string name="label_price">금액</string>
+    <string name="button_add_to_cart">장바구니 담기</string>"
 </resources>

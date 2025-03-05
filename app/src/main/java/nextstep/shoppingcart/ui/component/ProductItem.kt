@@ -20,15 +20,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import nextstep.shoppingcart.R
 import nextstep.shoppingcart.data.Product
 import nextstep.shoppingcart.ui.theme.Black
 import nextstep.shoppingcart.ui.theme.Gray
-import nextstep.shoppingcart.R
 
 @Composable
 fun ProductItem(
     product: Product,
-    onClick: () -> Unit,
+    onClick: (Product) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val descriptionNavigate = stringResource(R.string.description_product_item_navigate)
@@ -36,7 +36,7 @@ fun ProductItem(
 
     Column(
         modifier = modifier
-            .clickable { onClick() }
+            .clickable { onClick(product) }
             .semantics { contentDescription = descriptionNavigate }
     ) {
         AsyncImage(
@@ -84,7 +84,7 @@ fun ProductItem(
 
 @Preview(showBackground = true)
 @Composable
-fun ProductItemPreview() {
+private fun ProductItemPreview() {
     val dummyItem = Product(
         imageUrl = "https://picsum.photos/600/600",
         name = "상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명",
@@ -92,6 +92,8 @@ fun ProductItemPreview() {
     )
     ProductItem(
         product = dummyItem,
-        onClick = {}
+        onClick = {
+            // No-op
+        }
     )
 }

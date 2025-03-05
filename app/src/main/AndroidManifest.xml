@@ -25,6 +25,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ProductDetailActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ShoppingCart" />
+        <activity
+            android:name=".CartActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ShoppingCart" />
     </application>
 
 </manifest>

@@ -16,7 +16,7 @@ import nextstep.shoppingcart.ui.theme.White
 @Composable
 fun ProductLazyGrid(
     products: List<Product>,
-    onClick: () -> Unit,
+    onClick: (Product) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyVerticalGrid(
@@ -41,7 +41,7 @@ fun ProductLazyGrid(
 
 @Preview(showBackground = true)
 @Composable
-fun ProductLazyGridPreview() {
+private fun ProductLazyGridPreview() {
     val products: List<Product> = List(20) { _ ->
         Product(
             imageUrl = "https://picsum.photos/600/600",
@@ -52,6 +52,8 @@ fun ProductLazyGridPreview() {
 
     ProductLazyGrid(
         products = products,
-        onClick = {}
+        onClick = {
+            // No-op
+        }
     )
 }
