@@ -9,8 +9,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.ColorPainter
@@ -22,10 +26,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import kotlinx.coroutines.launch
 import nextstep.shoppingcart.R
 import nextstep.shoppingcart.data.model.Product
+import nextstep.shoppingcart.data.repository.CartRepository
 import nextstep.shoppingcart.ui.component.BackButtonAppBar
 import nextstep.shoppingcart.ui.component.BottomButton
+import nextstep.shoppingcart.ui.component.Snackbar
 import nextstep.shoppingcart.ui.theme.Black
 import nextstep.shoppingcart.ui.theme.Gray
 import nextstep.shoppingcart.ui.theme.GrayLight
@@ -38,8 +45,12 @@ fun ProductDetailScreen(
     onClickBackButton: () -> Unit,
     onClickBottomButton: () -> Unit,
 ) {
+    val hostState = remember { SnackbarHostState() }
+    val coroutineScope = rememberCoroutineScope()
     val appBarTitle = stringResource(R.string.title_product_detail)
     val addToCartButtonText = stringResource(R.string.button_add_to_cart)
+    val snackbarMessage = stringResource(R.string.snackbar_add_to_cart_message)
+    val snackbarActionText = stringResource(R.string.snackbar_add_to_cart_action)
 
     Scaffold(
         topBar = {
@@ -51,9 +62,21 @@ fun ProductDetailScreen(
         bottomBar = {
             BottomButton(
                 text = addToCartButtonText,
-                onClick = onClickBottomButton,
+                onClick = {
+                    CartRepository.addOne(product)
+                    coroutineScope.launch {
+                        val result = hostState.showSnackbar(
+                            message = snackbarMessage,
+                            actionLabel = snackbarActionText
+                        )
+                        if (result == SnackbarResult.ActionPerformed) {
+                            onClickBottomButton()
+                        }
+                    }
+                },
             )
-        }
+        },
+        snackbarHost = { Snackbar(hostState = hostState) }
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -67,7 +90,7 @@ fun ProductDetailScreen(
 
             HorizontalDivider(color = GrayLight)
 
-            ProductPriceRow(price = product.price.toString())
+            ProductPriceRow(price = product.formattedPrice)
         }
     }
 }

@@ -3,7 +3,7 @@ package nextstep.shoppingcart.data.repository
 import nextstep.shoppingcart.data.model.CartItem
 import nextstep.shoppingcart.data.model.Product
 
-object Cart {
+object CartRepository {
     private val _items: MutableList<CartItem> = mutableListOf()
     val items: List<CartItem> get() = _items.toList()
 

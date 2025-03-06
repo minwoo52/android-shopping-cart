@@ -7,5 +7,7 @@
     <string name="description_shopping_cart_navigate">장바구니 이동</string>
     <string name="description_back_navigate">뒤로가기</string>
     <string name="label_price">금액</string>
-    <string name="button_add_to_cart">장바구니 담기</string>"
+    <string name="button_add_to_cart">장바구니 담기</string>
+    <string name="snackbar_add_to_cart_message">장바구니에 담겼습니다.</string>
+    <string name="snackbar_add_to_cart_action">장바구니 보기</string>
 </resources>
