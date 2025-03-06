@@ -1,6 +1,6 @@
 package nextstep.shoppingcart.data.model
 
-data class CartItem(
+data class Cart(
     val product: Product,
     val count: Int,
 ) {
