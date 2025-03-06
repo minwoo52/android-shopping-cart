@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import nextstep.shoppingcart.R
 import nextstep.shoppingcart.data.repository.CartRepository
 import nextstep.shoppingcart.ui.component.BackButtonAppBar
+import nextstep.shoppingcart.ui.component.BottomButton
 import nextstep.shoppingcart.ui.component.CartLazyColumn
 import nextstep.shoppingcart.ui.theme.ShoppingCartTheme
 import nextstep.shoppingcart.ui.theme.White
@@ -25,6 +26,8 @@ fun CartScreen(
 ) {
     val appBarTitle = stringResource(R.string.title_cart)
     var carts by remember { mutableStateOf(CartRepository.items) }
+    val totalPrice = remember(carts) { CartRepository.totalPrice }
+    val orderText = stringResource(R.string.button_order_with_price, totalPrice)
 
     Scaffold(
         topBar = {
@@ -33,6 +36,12 @@ fun CartScreen(
                 onClick = onClickBackButton,
             )
         },
+        bottomBar = {
+            BottomButton(
+                text = orderText,
+                onClick = { /* NO-OP */ },
+            )
+        }
     ) { innerPadding ->
         CartLazyColumn(
             carts = carts,
