@@ -35,7 +35,7 @@ import nextstep.shoppingcart.ui.component.BottomButton
 import nextstep.shoppingcart.ui.component.Snackbar
 import nextstep.shoppingcart.ui.theme.Black
 import nextstep.shoppingcart.ui.theme.Gray
-import nextstep.shoppingcart.ui.theme.GrayLight
+import nextstep.shoppingcart.ui.theme.Gray10
 import nextstep.shoppingcart.ui.theme.ShoppingCartTheme
 import nextstep.shoppingcart.ui.theme.White
 
@@ -88,7 +88,7 @@ fun ProductDetailScreen(
 
             ProductName(name = product.name)
 
-            HorizontalDivider(color = GrayLight)
+            HorizontalDivider(color = Gray10)
 
             ProductPriceRow(price = product.formattedPrice)
         }
