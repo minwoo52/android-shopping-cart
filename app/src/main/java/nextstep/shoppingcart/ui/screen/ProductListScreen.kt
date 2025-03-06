@@ -19,7 +19,7 @@ fun ProductListScreen(
     val appBarTitle = stringResource(R.string.title_product_list)
     val products: List<Product> = List(20) { index ->
         Product(
-            imageUrl = "https://picsum.photos/600/600?random=$index",
+            imageUrl = "https://picsum.photos/id/${getRandomId()}/600/600",
             name = "상품명 $index",
             price = 10000
         )
@@ -40,6 +40,8 @@ fun ProductListScreen(
         )
     }
 }
+
+private fun getRandomId(): Int = (100..200).random()
 
 @Preview(showBackground = true)
 @Composable

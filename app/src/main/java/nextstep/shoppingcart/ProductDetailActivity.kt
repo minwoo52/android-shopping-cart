@@ -2,6 +2,7 @@ package nextstep.shoppingcart
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,9 +12,13 @@ import nextstep.shoppingcart.ui.theme.ShoppingCartTheme
 
 class ProductDetailActivity : ComponentActivity() {
 
-    private val productId: String by lazy {
-        intent.getStringExtra(ARG_PRODUCT_ID)
-            ?: throw IllegalArgumentException("productId is required")
+    private val product: Product? by lazy {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra(ARG_PRODUCT, Product::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getParcelableExtra(ARG_PRODUCT) as? Product ?: error("Product is required.")
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,20 +26,12 @@ class ProductDetailActivity : ComponentActivity() {
         setContent {
             ShoppingCartTheme {
                 ProductDetailScreen(
-                    product = getDummyProduct(),
+                    product = product!!,
                     onClickBackButton = { finish() },
                     onClickBottomButton = { moveToCartPage() }
                 )
             }
         }
-    }
-
-    private fun getDummyProduct(): Product {
-        return Product(
-            imageUrl = "https://picsum.photos/600/600?random=$productId",
-            name = "PET보틀-원형(500ml)",
-            price = 42200
-        )
     }
 
     private fun moveToCartPage() {
@@ -43,14 +40,14 @@ class ProductDetailActivity : ComponentActivity() {
 
     companion object {
 
-        const val ARG_PRODUCT_ID = "productId"
+        private const val ARG_PRODUCT = "ARG_PRODUCT"
 
         fun newIntent(
             context: Context,
-            productId: String
+            product: Product
         ): Intent {
             return Intent(context, ProductDetailActivity::class.java).apply {
-                putExtra(ARG_PRODUCT_ID, productId)
+                putExtra(ARG_PRODUCT, product)
             }
         }
     }
