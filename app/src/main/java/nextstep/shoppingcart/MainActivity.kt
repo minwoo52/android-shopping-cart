@@ -3,7 +3,7 @@ package nextstep.shoppingcart
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import nextstep.shoppingcart.data.Product
+import nextstep.shoppingcart.data.model.Product
 import nextstep.shoppingcart.ui.screen.ProductListScreen
 import nextstep.shoppingcart.ui.theme.ShoppingCartTheme
 
