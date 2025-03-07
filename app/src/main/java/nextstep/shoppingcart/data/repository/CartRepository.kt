@@ -9,6 +9,15 @@ object CartRepository {
 
     val totalPrice: Int get() = _items.sumOf { it.totalPrice }
 
+    fun clear() {
+        _items.clear()
+    }
+
+    fun addAll(products: List<Product>): List<Cart> {
+        products.forEach { addOne(it) }
+        return items
+    }
+
     fun addOne(product: Product): List<Cart> {
         val item = _items.find { it.product == product }
         if (item == null) {
