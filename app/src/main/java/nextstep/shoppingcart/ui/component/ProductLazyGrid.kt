@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import nextstep.shoppingcart.data.Product
+import nextstep.shoppingcart.data.model.Product
 import nextstep.shoppingcart.ui.theme.White
 
 @Composable

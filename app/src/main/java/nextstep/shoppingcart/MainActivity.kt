@@ -3,6 +3,7 @@ package nextstep.shoppingcart
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import nextstep.shoppingcart.data.model.Product
 import nextstep.shoppingcart.ui.screen.ProductListScreen
 import nextstep.shoppingcart.ui.theme.ShoppingCartTheme
 
@@ -17,17 +18,17 @@ class MainActivity : ComponentActivity() {
                         moveToCartPage()
                     },
                     onClickProductItem = {
-                        moveToProductDetailPage(productId = it.randomId)
+                        moveToProductDetailPage(product = it)
                     }
                 )
             }
         }
     }
 
-    private fun moveToProductDetailPage(productId: String) {
+    private fun moveToProductDetailPage(product: Product) {
         val intent = ProductDetailActivity.newIntent(
             context = this,
-            productId = productId
+            product = product
         )
         startActivity(intent)
     }
